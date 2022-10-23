@@ -19,23 +19,26 @@ import utils.Conexao;
 
     @Override
     public void cadastrar(Object objeto) throws SQLException {
-    String sql = "call cadastrarcliente(?,?,?,?,?,?,?,?,?,?,?,?)";
+    String sql = "call cadastrarcliente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
        Cliente cliente = (Cliente) objeto;
         PreparedStatement stmt = null;
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, cliente.getIdCliente());
             stmt.setString(2, cliente.getNomePessoa());
-            stmt.setString(3, cliente.getDataNascimentoPessoa());            
-            stmt.setString(4,cliente.getCpfPessoa());
-            stmt.setString(5, cliente.getEnderecoPessoa());
+            stmt.setString(3,cliente.getCpfPessoa());
+            stmt.setString(4, cliente.getDataNascimentoPessoa());  
+            stmt.setString(5, cliente.getCepPessoa());
             stmt.setString(6, cliente.getCidadePessoa());
-            stmt.setString(7, cliente.getEstadoPessoa());
-            stmt.setString(8, cliente.getCepPessoa());
-            stmt.setString(9, cliente.getTelefonePessoa());
-            stmt.setString(10, cliente.getEmailPessoa());
-            stmt.setString(11, cliente.getGeneroPessoa());
-            stmt.setString(12,cliente.getSenhaPessoa());
+            stmt.setString(7, cliente.getBairroPessoa()); 
+            stmt.setString(8, cliente.getNumeroPessoa());
+            stmt.setString(9, cliente.getComplementoPessoa());
+            stmt.setString(10, cliente.getEstadoPessoa());
+            stmt.setString(11, cliente.getTelefonePessoa());
+            stmt.setString(12, cliente.getEmailPessoa());
+            stmt.setString(13, cliente.getGeneroPessoa());
+            stmt.setString(14,cliente.getSenhaPessoa());
+            stmt.setString(15,cliente.getLogouPessoa());
             
             stmt.execute();
         } catch (SQLException ex) {
@@ -74,7 +77,7 @@ import utils.Conexao;
                             stmt = conexao.prepareStatement(sql);
                             rs = stmt.executeQuery();
                             while (rs.next()) {
-                               Cliente cliente = new Cliente(rs.getInt("idCliente"), rs.getString("nomeCliente"), rs.getString("dataNascimentoCliente"), rs.getString("cpfCliente"), rs.getString("enderecoCliente"), rs.getString("cidadeCliente"), rs.getString("estadoCliente"), rs.getString("cepCliente"), rs.getString("telefoneCliente"), rs.getString("emailCliente"),  rs.getString("generoCliente"), rs.getString("senhaCliente"));
+                               Cliente cliente = new Cliente(rs.getInt("idCliente"), rs.getString("nomeCliente"), rs.getString("dataNascimentoCliente"), rs.getString("cepCliente"), rs.getString("cidadeCliente"), rs.getString("bairroCliente"), rs.getString("numeroCliente"), rs.getString("complementoCliente"), rs.getString("estadoCliente"), rs.getString("telefoneCliente"), rs.getString("emailCliente"),  rs.getString("generoCliente"));
                               lista.add(cliente);
                                 }
                             } catch (SQLException ex) {
@@ -96,7 +99,7 @@ import utils.Conexao;
                            stmt.setInt(1, codigo);
                            rs = stmt.executeQuery();
                            while (rs.next()) {
-                                cliente = new Cliente(rs.getInt("idCliente"), rs.getString("nomeCliente"), rs.getString("dataNascimentoCliente"), rs.getString("cpfCliente"), rs.getString("enderecoCliente"), rs.getString("cidadeCliente"), rs.getString("estadoCliente"), rs.getString("cepCliente"), rs.getString("telefoneCliente"), rs.getString("emailCliente"),  rs.getString("generoCliente"), rs.getString("senhaCliente"));
+                                cliente = new Cliente(rs.getInt("idpessoa"), rs.getString("nomepessoa"), rs.getString("ceppessoa"), rs.getString("cidadepessoa"), rs.getString("bairropessoa"), rs.getString("numeropessoa"), rs.getString("complementopessoa"), rs.getString("estadopessoa"), rs.getString("telefonepessoa"), rs.getString("emailpessoa"),  rs.getString("generopessoa"), rs.getString("senhapessoa"));
                            }
                        } catch (SQLException ex) {
                            throw new SQLException("Erro ao consultar cliente");

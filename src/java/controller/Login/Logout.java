@@ -19,7 +19,7 @@ public class Logout extends HttpServlet {
         if(sessao != null) {
             sessao.invalidate();
         }
-        request.getRequestDispatcher("login_cadastro.jsp").forward(request, response);
+        request.getRequestDispatcher("listarPet").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

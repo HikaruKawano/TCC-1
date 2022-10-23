@@ -25,12 +25,12 @@ public class Pet{
         this.observacoes = observacoes;
     }
 
-    public Pet() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public Pet(int idPet){
+        this.idPet = idPet;
     }
 
-    public Pet(String nomePet, String idadePet, String racaPet, String coresPet, String especiePet, String sexoPet, String portePet, String observacoes) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Pet() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getIdPet() {

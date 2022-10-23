@@ -19,14 +19,16 @@ public class CadastrarCliente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         try {
-            int idCliente = request.getParameter("idCliente").isEmpty() ? 0 : Integer.parseInt(request.getParameter("idCliente"));
+            int idCliente = request.getParameter("idCliente").isEmpty() ? 0 : Integer.parseInt(request.getParameter("idPessoa"));
             String nomePessoa = request.getParameter("nomeCliente");
-            String dataNascimentoPessoa = request.getParameter("dataNascimentoCliente");
             String cpfPessoa = request.getParameter("cpfCliente");
-            String enderecoPessoa = request.getParameter("enderecoCliente");
-            String cidadePessoa = request.getParameter("cidadeCliente");
-            String estadoPessoa = request.getParameter("estadoCliente");
+            String dataNascimentoPessoa = request.getParameter("dataNascimentoCliente");
             String cepPessoa = request.getParameter("cepCliente");
+            String cidadePessoa = request.getParameter("cidadeCliente");
+            String bairroPessoa = request.getParameter("bairroCliente");   
+            String numeroPessoa = request.getParameter("numeroCliente");
+            String complementoPessoa = request.getParameter("complementoCliente");           
+            String estadoPessoa = request.getParameter("estadoCliente");          
             String telefonePessoa = request.getParameter("telefoneCliente");
             String emailPessoa = request.getParameter("emailCliente");
             String senhaPessoa = request.getParameter("senhaCliente");
@@ -34,7 +36,9 @@ public class CadastrarCliente extends HttpServlet {
            
             
             
-            Cliente cliente = new Cliente (idCliente, nomePessoa, dataNascimentoPessoa, cpfPessoa, enderecoPessoa, cidadePessoa, estadoPessoa, cepPessoa, telefonePessoa, emailPessoa, generoPessoa, senhaPessoa);
+            Cliente cliente = new Cliente (idCliente, nomePessoa, cpfPessoa, dataNascimentoPessoa, cepPessoa, 
+            cidadePessoa, bairroPessoa, numeroPessoa, complementoPessoa, estadoPessoa, telefonePessoa, 
+            emailPessoa, generoPessoa, senhaPessoa, "Cliente");
             
             ClienteDAO clientedao = new ClienteDAO();
             
@@ -46,7 +50,7 @@ public class CadastrarCliente extends HttpServlet {
             request.setAttribute("mensagem", ex.getMessage());
         }
         
-        request.getRequestDispatcher("login_cadastro.jsp").forward(request, response);
+        request.getRequestDispatcher("Login").forward(request, response);
     }
 
     @Override

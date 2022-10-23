@@ -14,11 +14,17 @@ document.getElementById('gato').classList.remove('btn_todos');
                 document.getElementById('todos').classList.add('btn_todos');
                 document.getElementById('gato').classList.remove('btn_todos');
                 document.getElementById('cachorro').classList.remove('btn_todos');       
-                    }
+            }
         }
 //btn-outline
-
-function sessao(pg){
     
-}
+            
+        
+            
+   
+
+
+
+
+            
 

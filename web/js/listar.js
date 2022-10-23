@@ -1,13 +1,9 @@
-$(document).ready(function (idPet){   
-    let urlBusca = `${window.location.origin}/jsonPet/listar`;
+$(document).ready(function (){
+    let urlBusca = `${window.location.origin}\petdao\: %s`;
     $.getJSON(urlBusca, function(response){
-        if (response !== null || response !== undefined) {
+        if(response !== null || response !== undefined){
             var listaPet = response;
             console.log(listaPet);
-        } else {
         }
     });
-    $.post("listarPet", {idPet:idPet});
 });
-
-

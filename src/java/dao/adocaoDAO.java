@@ -5,8 +5,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import model.Adocao;
+import model.Cliente;
+import model.Funcionario;
 import model.Pet;
 
         public class adocaoDAO implements DAOGenerica{
@@ -19,14 +24,20 @@ import model.Pet;
 
     @Override
     public void cadastrar(Object objeto) throws SQLException {
-    String sql = "call cadastrarPet(?,?,?,?,?,?,?,?)";
+    String sql = "call gravarAdocao(?,?,?,?,?,?)";
        Adocao adocao = (Adocao) objeto;
         PreparedStatement stmt = null;
         try {
             stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, adocao.getIdAdocao());
+            stmt.setDate(2, new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(adocao.getDataAdocao()).getTime()));
+            stmt.setTime(3, new java.sql.Time(new SimpleDateFormat("HH:mm:ss").parse(adocao.getHorarioAdocao()).getTime()));
+            stmt.setInt(4, adocao.getPet().getIdPet());
+            stmt.setInt(5, adocao.getFuncionario().getIdPessoa());
+            stmt.setInt(6, adocao.getCliente().getIdPessoa());
             stmt.execute();
-        } catch (SQLException ex) {
-            throw new SQLException("Erro ao cadastrar Adoção");
+        } catch (SQLException | ParseException ex) {
+            throw new SQLException("Erro ao adotar");
         } finally {
             Conexao.encerrarConexao(conexao, stmt);
         }
@@ -34,8 +45,8 @@ import model.Pet;
 
     @Override
     public Object consultar(int codigo) throws SQLException {
-        String sql = "select * from pet where idpet = ?";
-        Pet pet = null;
+        String sql = "select * from adocao where idadocao = ?";
+        Adocao adocao = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
@@ -43,31 +54,60 @@ import model.Pet;
             stmt.setInt(1, codigo);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                pet = new Pet(rs.getInt("idpet"), rs.getString("nomepet"), rs.getString("racapet"), rs.getString("idadepet"), rs.getString("especiepet"), rs.getString("corespet"),  rs.getString("sexopet"),  rs.getString("portepet"),rs.getString("observacoes"));
+                adocao = new Adocao(
+                        rs.getInt("idAdocao"),
+                        new SimpleDateFormat("yyyy-MM-dd").format(rs.getDate("dataAdocao")),
+                        new SimpleDateFormat("HH:mm:ss").format(rs.getTime("horarioAdocao")),
+                        (Pet) new PetDAO().consultar(rs.getInt("idPet")),
+                        (Funcionario) new FuncionarioDAO().consultar(rs.getInt("idFuncionario")),
+                        (Cliente) new ClienteDAO().consultar(rs.getInt("idCliente"))
+                );
             }
-        } catch (SQLException ex) {
-            throw new SQLException("Erro ao consultar pet");
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new SQLException("Erro ao visualizar adoção");
         } finally {
             Conexao.encerrarConexao(conexao, stmt, rs);
         }
-        return pet;
+        return adocao;
     }    
 
     @Override
     public List<Object> listar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    String sql = "select * from adocao";
+        List<Object> lista = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Adocao adocao = new Adocao(
+                        rs.getInt("idAdocao"),
+                        new SimpleDateFormat("yyyy-MM-dd").format(rs.getDate("dataAdocao")),
+                        new SimpleDateFormat("HH:mm:ss").format(rs.getTime("horarioAdocao")),
+                        (Pet) new PetDAO().consultar(rs.getInt("idPet")),
+                        (Funcionario) new FuncionarioDAO().consultar(rs.getInt("idFuncionario")),
+                        (Cliente) new ClienteDAO().consultar(rs.getInt("idCliente"))
+                );
+                lista.add(adocao);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new SQLException("Erro ao listar adoções");
+        } finally {
+            Conexao.encerrarConexao(conexao, stmt, rs);
+        }
+        return lista;    }
 
     @Override
     public void excluir(int codigo) throws SQLException {
-        String sql = "delete from Pet where idPet = ?";
+        String sql = "delete from adocao where idAdocao = ?";
         PreparedStatement stmt = null;
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, codigo);
             stmt.execute();
         } catch (SQLException ex) {
-            throw new SQLException("Erro ao excluir Pet");
+            throw new SQLException("Erro ao excluir adoção");
         } finally {
             Conexao.encerrarConexao(conexao, stmt);
         }    

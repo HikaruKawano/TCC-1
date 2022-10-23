@@ -9,7 +9,7 @@ margin: 0 5em 5em auto;
 .col{
   margin-top: 20px;
   margin-bottom: 0px;
-    width: 22em;
+  width: 22em;
 
 }
 .collapse{
@@ -59,9 +59,12 @@ border-radius: 10px;
     object-fit: cover;
  }
 /*btn-entrar*/
-.btn.btn-primary{
-  background-color: var(--Detalhes);
+.btn{
   border: var(--Detalhes);
+}
+
+.btn-todos{
+    background-color: var(--Detalhes);
 }
   /* buscar */
 

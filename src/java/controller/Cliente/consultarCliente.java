@@ -12,19 +12,35 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "consultarCliente", urlPatterns = {"/consultarCliente"})
 public class consultarCliente extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         try {
-            int idCliente = Integer.parseInt(request.getParameter("idpet"));
-
+            int idCliente = Integer.parseInt(request.getParameter("idcliente"));
             ClienteDAO clientedao = new ClienteDAO();
-            
-            request.setAttribute("cliente", clientedao.consultar(idCliente));
+            request.setAttribute("clientes", clientedao.consultar(idCliente));
         } catch (SQLException | ClassNotFoundException ex) {
             request.setAttribute("mensagem", ex.getMessage());
         }
         
-        request.getRequestDispatcher("editarCliente.jsp").forward(request, response);
+        request.getRequestDispatcher("conta.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
     }
     }

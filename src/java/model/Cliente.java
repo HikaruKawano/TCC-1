@@ -4,14 +4,20 @@ public class Cliente extends Pessoa{
 
     private int idCliente;
 
-    public Cliente(int idCliente,String nomePessoa, String dataNascimentoPessoa, String cpfPessoa, String enderecoPessoa,  String cidadePessoa, String estadoPessoa, String cepPessoa, String telefonePessoa, String emailPessoa, String generoPessoa, String senhaPessoa) {
-        super(nomePessoa, dataNascimentoPessoa, cpfPessoa, enderecoPessoa, cidadePessoa, estadoPessoa, cepPessoa, telefonePessoa, emailPessoa, generoPessoa, senhaPessoa);
+    public Cliente(int idCliente, String nomePessoa, String cpfPessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa, String senhaPessoa, String logouPessoa) {
+        super(nomePessoa, cpfPessoa,  dataNascimentoPessoa, cepPessoa, cidadePessoa, bairroPessoa, numeroPessoa, complementoPessoa, estadoPessoa, telefonePessoa, emailPessoa, generoPessoa, senhaPessoa, logouPessoa);
         this.idCliente = idCliente;
     }
     
     public Cliente(){
-        super("","","","","","","","","","","");
+        super("","","","","","","","","","","","","","");
     }
+ 
+    public Cliente(int idCliente, String nomePessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa) {
+        super(nomePessoa, dataNascimentoPessoa, cepPessoa, cidadePessoa, bairroPessoa, numeroPessoa, complementoPessoa, estadoPessoa, telefonePessoa, emailPessoa, generoPessoa);
+        this.idCliente = idCliente;
+    }
+
 
     public int getIdCliente() {
         return idCliente;

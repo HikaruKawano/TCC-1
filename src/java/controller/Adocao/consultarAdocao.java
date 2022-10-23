@@ -1,5 +1,7 @@
 package controller.Adocao;
 
+import dao.ClienteDAO;
+import dao.PetDAO;
 import dao.adocaoDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,16 +18,18 @@ public class consultarAdocao extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            int idPet = Integer.parseInt(request.getParameter("idpet"));
+            int idAdocao = Integer.parseInt(request.getParameter("idAdocao"));
 
             adocaoDAO adocaodao = new adocaoDAO();
-            
-            request.setAttribute("pet", adocaodao.consultar(idPet));
+
+            request.setAttribute("adocoes", adocaodao.consultar(idAdocao));
+            request.setAttribute("pets", new PetDAO().listar());
+            request.setAttribute("clientes", new ClienteDAO().listar());
+
         } catch (SQLException | ClassNotFoundException ex) {
             request.setAttribute("mensagem", ex.getMessage());
         }
-        
-        request.getRequestDispatcher("Adocao.jsp").forward(request, response);
+        request.getRequestDispatcher("listarAdocao").forward(request, response);
     }
     
         @Override

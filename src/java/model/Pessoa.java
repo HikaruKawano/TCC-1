@@ -3,29 +3,50 @@ package model;
 public class Pessoa {
     int idPessoa;
     private String nomePessoa;
-    private String cpfPessoa;
+    private String cpfPessoa;  
     private String dataNascimentoPessoa;
-    private String enderecoPessoa;
-    private String cidadePessoa;
-    private String estadoPessoa;
     private String cepPessoa;
+    private String cidadePessoa;
+    private String bairroPessoa;    
+    private String numeroPessoa;
+    private String complementoPessoa;
+    private String estadoPessoa;
     private String telefonePessoa;
     private String emailPessoa;
     private String generoPessoa;
     private String senhaPessoa;
+    private String logouPessoa;
 
-    public Pessoa(String nomePessoa, String dataNascimentoPessoa, String cpfPessoa, String enderecoPessoa, String cidadePessoa, String estadoPessoa, String cepPessoa, String telefonePessoa, String emailPessoa, String generoPessoa, String senhaPessoa) {
+    public Pessoa(String nomePessoa, String cpfPessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa, String senhaPessoa, String logouPessoa) {
         this.nomePessoa = nomePessoa;
         this.cpfPessoa = cpfPessoa;
         this.dataNascimentoPessoa = dataNascimentoPessoa;
-        this.enderecoPessoa = enderecoPessoa;
-        this.cidadePessoa = cidadePessoa;
-        this.estadoPessoa = estadoPessoa;
         this.cepPessoa = cepPessoa;
+        this.cidadePessoa = cidadePessoa;
+        this.bairroPessoa = bairroPessoa;
+        this.numeroPessoa = numeroPessoa; 
+        this.complementoPessoa = complementoPessoa; 
+        this.estadoPessoa = estadoPessoa;     
         this.telefonePessoa = telefonePessoa;
         this.emailPessoa = emailPessoa;
         this.generoPessoa = generoPessoa;
         this.senhaPessoa = senhaPessoa;
+        this.logouPessoa = logouPessoa;
+    }
+    
+    public Pessoa(String nomePessoa, String cpfPessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa) {
+        this.nomePessoa = nomePessoa;
+        this.cpfPessoa = cpfPessoa;
+        this.dataNascimentoPessoa = dataNascimentoPessoa;
+        this.cepPessoa = cepPessoa;
+        this.cidadePessoa = cidadePessoa;
+        this.bairroPessoa = bairroPessoa;
+        this.numeroPessoa = numeroPessoa; 
+        this.complementoPessoa = complementoPessoa; 
+        this.estadoPessoa = estadoPessoa;     
+        this.telefonePessoa = telefonePessoa;
+        this.emailPessoa = emailPessoa;
+        this.generoPessoa = generoPessoa;
     }
     
     public Pessoa(String nomePessoa, String cpfPessoa, String emailPessoa, String generoPessoa){
@@ -35,6 +56,23 @@ public class Pessoa {
         this.generoPessoa = generoPessoa;
     }
 
+    public Pessoa(String nomePessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa) {
+        this.nomePessoa = nomePessoa;
+        this.dataNascimentoPessoa = dataNascimentoPessoa;
+        this.cepPessoa = cepPessoa;
+        this.cidadePessoa = cidadePessoa;
+        this.bairroPessoa = bairroPessoa;
+        this.numeroPessoa = numeroPessoa;
+        this.complementoPessoa = complementoPessoa;
+        this.estadoPessoa = estadoPessoa;
+        this.telefonePessoa = telefonePessoa;
+        this.emailPessoa = emailPessoa;
+        this.generoPessoa = generoPessoa;
+    }
+
+    public Pessoa() {
+    }
+ 
     public int getIdPessoa() {
         return idPessoa;
     }
@@ -67,12 +105,12 @@ public class Pessoa {
         this.cpfPessoa = cpfPessoa;
     }
 
-    public String getEnderecoPessoa() {
-        return enderecoPessoa;
+    public String getBairroPessoa() {
+        return bairroPessoa;
     }
 
-    public void setEnderecoPessoa(String enderecoPessoa) {
-        this.enderecoPessoa = enderecoPessoa;
+    public void setBairroPessoa(String bairroPessoa) {
+        this.bairroPessoa = bairroPessoa;
     }
 
     public String getCepPessoa() {
@@ -81,6 +119,22 @@ public class Pessoa {
 
     public void setCepPessoa(String cepPessoa) {
         this.cepPessoa = cepPessoa;
+    }
+
+    public String getNumeroPessoa() {
+        return numeroPessoa;
+    }
+
+    public void setNumeroPessoa(String numeroPessoa) {
+        this.numeroPessoa = numeroPessoa;
+    }
+
+    public String getComplementoPessoa() {
+        return complementoPessoa;
+    }
+
+    public void setComplementoPessoa(String complementoPessoa) {
+        this.complementoPessoa = complementoPessoa;
     }
 
     public String getCidadePessoa() {
@@ -128,5 +182,12 @@ public class Pessoa {
     public void setSenhaPessoa(String senhaPessoa){
         this.senhaPessoa = senhaPessoa;
     }
-    
+
+    public String getLogouPessoa() {
+        return logouPessoa;
+    }
+
+    public void setLogouPessoa(String logouPessoa) {
+        this.logouPessoa = logouPessoa;
+    }
 }

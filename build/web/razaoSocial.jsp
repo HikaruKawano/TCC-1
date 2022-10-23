@@ -32,7 +32,7 @@
         </h4>
         
         <div class="d-grid gap-2">
-            <button  class="btn btn-primary" type="button"><a class="link" href="index.jsp"> Voltar</a></button>
+            <button  class="btn btn-primary" type="button"><a class="link" href="listarPet"> Voltar</a></button>
           </div>      
         <script src="js/razaoscript.js" > </script>
 </div>
