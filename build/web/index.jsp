@@ -217,7 +217,7 @@
               <% 
                  if(usuario != null){ 
               %>
-                  <button  class="btn btn-primary"><a href="consultarAdocao">Adotar</a></button>
+              <button  class="btn btn-primary"><a href="consultarAdocao?idpet">Adotar</a></button>
                   <%
                     }else{
                   %>

@@ -19,26 +19,28 @@ import utils.Conexao;
 
     @Override
     public void cadastrar(Object objeto) throws SQLException {
-    String sql = "call cadastrarcliente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String sql = "call cadastrarcliente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
        Cliente cliente = (Cliente) objeto;
         PreparedStatement stmt = null;
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, cliente.getIdCliente());
-            stmt.setString(2, cliente.getNomePessoa());
-            stmt.setString(3,cliente.getCpfPessoa());
-            stmt.setString(4, cliente.getDataNascimentoPessoa());  
-            stmt.setString(5, cliente.getCepPessoa());
-            stmt.setString(6, cliente.getCidadePessoa());
-            stmt.setString(7, cliente.getBairroPessoa()); 
-            stmt.setString(8, cliente.getNumeroPessoa());
-            stmt.setString(9, cliente.getComplementoPessoa());
-            stmt.setString(10, cliente.getEstadoPessoa());
-            stmt.setString(11, cliente.getTelefonePessoa());
-            stmt.setString(12, cliente.getEmailPessoa());
-            stmt.setString(13, cliente.getGeneroPessoa());
-            stmt.setString(14,cliente.getSenhaPessoa());
-            stmt.setString(15,cliente.getLogouPessoa());
+            stmt.setString(2, cliente.getNomeImg());
+            stmt.setString(3, cliente.getNomePessoa());
+            stmt.setString(4,cliente.getCpfPessoa());
+            stmt.setString(5, cliente.getDataNascimentoPessoa());  
+            stmt.setString(6, cliente.getCepPessoa());
+            stmt.setString(7, cliente.getCidadePessoa());
+            stmt.setString(8, cliente.getBairroPessoa()); 
+            stmt.setString(9, cliente.getRuaPessoa());
+            stmt.setString(10, cliente.getNumeroPessoa());
+            stmt.setString(11, cliente.getComplementoPessoa());
+            stmt.setString(12, cliente.getEstadoPessoa());
+            stmt.setString(13, cliente.getTelefonePessoa());
+            stmt.setString(14, cliente.getEmailPessoa());
+            stmt.setString(15, cliente.getGeneroPessoa());
+            stmt.setString(16,cliente.getSenhaPessoa());
+            stmt.setString(17,cliente.getLogouPessoa());
             
             stmt.execute();
         } catch (SQLException ex) {
@@ -77,7 +79,7 @@ import utils.Conexao;
                             stmt = conexao.prepareStatement(sql);
                             rs = stmt.executeQuery();
                             while (rs.next()) {
-                               Cliente cliente = new Cliente(rs.getInt("idCliente"), rs.getString("nomeCliente"), rs.getString("dataNascimentoCliente"), rs.getString("cepCliente"), rs.getString("cidadeCliente"), rs.getString("bairroCliente"), rs.getString("numeroCliente"), rs.getString("complementoCliente"), rs.getString("estadoCliente"), rs.getString("telefoneCliente"), rs.getString("emailCliente"),  rs.getString("generoCliente"));
+                               Cliente cliente = new Cliente(rs.getInt("idpessoa"), rs.getString("nomeimg"), rs.getString("nomepessoa"), rs.getString("dataNascimentopessoa"), rs.getString("ceppessoa"), rs.getString("cidadepessoa"), rs.getString("bairropessoa"), rs.getString("ruapessoa"), rs.getString("numeropessoa"), rs.getString("complementopessoa"), rs.getString("estadopessoa"), rs.getString("telefonepessoa"), rs.getString("emailpessoa"),  rs.getString("generopessoa"));
                               lista.add(cliente);
                                 }
                             } catch (SQLException ex) {
@@ -99,7 +101,7 @@ import utils.Conexao;
                            stmt.setInt(1, codigo);
                            rs = stmt.executeQuery();
                            while (rs.next()) {
-                                cliente = new Cliente(rs.getInt("idpessoa"), rs.getString("nomepessoa"), rs.getString("ceppessoa"), rs.getString("cidadepessoa"), rs.getString("bairropessoa"), rs.getString("numeropessoa"), rs.getString("complementopessoa"), rs.getString("estadopessoa"), rs.getString("telefonepessoa"), rs.getString("emailpessoa"),  rs.getString("generopessoa"), rs.getString("senhapessoa"));
+                                cliente = new Cliente(rs.getInt("idpessoa"), rs.getString("nomeimg"), rs.getString("nomepessoa"), rs.getString("ceppessoa"), rs.getString("cidadepessoa"), rs.getString("bairropessoa"), rs.getString("ruapessoa"), rs.getString("numeropessoa"), rs.getString("complementopessoa"), rs.getString("estadopessoa"), rs.getString("telefonepessoa"), rs.getString("emailpessoa"),  rs.getString("generopessoa"), rs.getString("senhapessoa"));
                            }
                        } catch (SQLException ex) {
                            throw new SQLException("Erro ao consultar cliente");
@@ -108,7 +110,8 @@ import utils.Conexao;
                        }
                        return cliente; 
     }
-    }
+}
+    
 
     
         

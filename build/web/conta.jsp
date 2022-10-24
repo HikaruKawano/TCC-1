@@ -30,7 +30,7 @@
                 <input type="type" name="idCliente" id="idcliente" hidden value="${cliente.idpessoa > 0 ? cliente.idpessoa : ""}">
             <div>
                 <label for="foto">Foto de perfil</label>
-                <input type="file" id="foto" accept="image/png,image/jpeg">
+                <input type="file" id="foto" name="File" accept="image/png,image/jpeg">
             </div>
             <div>
                 <label for="nome">Nome</label>

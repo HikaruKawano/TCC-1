@@ -16,15 +16,13 @@
 <div class="container" id="container">
 	
 	<div class="form-container sign-up-container">
-            <form action="CadastrarCliente" method="get" class="Form-criar-conta">
+            <form action="CadastrarCliente" method="post" class="Form-criar-conta">
 			
 			<h1 class="h1NovaConta">Nova Conta</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-                        <input name="idCliente" id="idcliente" type="text" hidden/>
+                        
+                        <input type="text" name="idpessoa" hidden/>
+                        
+                        <input enctype="multi-part/form-data" type="file" name="imagem" required>
                         <input type="text" placeholder="Nome" required name="nomeCliente"/>
                         <input type="text" placeholder="Cpf" required name="cpfCliente" />
                         <input type="date" placeholder="Data nascimento" name="dataNascimentoCliente" required />                 
@@ -86,10 +84,9 @@
                                             <input id="others" type="radio" name="generoCliente" value="Outros">
 						<label for="others">Outros</label>
 					</div>
-</div>
-</div>
-                        <button class="btn_entrar btn_criar_conta" type="submit">Criar nova conta</button>
-			
+                            </div>
+                            </div>
+                    <button class="btn_entrar btn_criar_conta" type="submit">Criar nova conta</button>	
 		</form>
 	</div>
 	<div class="form-container sign-in-container">

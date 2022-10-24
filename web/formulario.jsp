@@ -1,4 +1,4 @@
- rs.getString("dataNascimentoCliente"),<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -22,8 +22,13 @@
                 </div>
             <div class="input-group">
                 <div class="group-1">
-                    <input name="idpessoa" id="idpessoa" type="text" readonly value="${funcionario.idpessoa > 0 ? funcionario.idpessoa : ""}" hidden/>
-                
+                    
+                    <input name="idpessoa" id="idpessoa" type="text" value="${funcionario.idpessoa > 0 ? funcionario.idpessoa : ""}" hidden/>
+                     
+                    <div class="input-box">
+                        <label for="Fotp">Foto</label>
+                        <input enctype="multi-part/form-data" id="Foto" type="file"  name="imagem" required>
+                    </div>
                     <div class="input-box">
                         <label for="nomepessoa">Nome Completo</label>
                         <input id="nomepessoa" type="text" name="nomepessoa" placeholder="Digite seu nome" required  value="${funcionario.nomepessoa}">
@@ -48,6 +53,10 @@
                         <label for="bairro">Bairro</label>
                         <input id="bairro" type="text" name="bairropessoa" placeholder="Digite seu bairro" required  value="${funcionario.bairropessoa}">
                     </div>
+                    <div class="input-box">
+                        <label for="ruapessoa">Rua</label>
+                        <input id="ruapessoa" type="text" name="ruapessoa" placeholder="Digite sua rua" required  value="${funcionario.ruapessoa}">
+                    </div>  
                     <div class="input-box">
                         <label for="numero">Número</label>
                         <input id="numero" type="text" name="numeropessoa" placeholder="Digite o número de sua casa" required  value="${funcionario.numeropessoa}">
@@ -99,10 +108,6 @@
                         <label for="emailpessoa">E-mail</label>
                         <input id="emailpessoa" type="email" name="emailpessoa" placeholder="Digite seu e-mail" required  value="${funcionario.emailpessoa}">
                     </div>                      
-                    <div class="input-box">
-                        <label for="Fotp">Foto</label>
-                        <input id="Foto" type="file" name="Foto" placeholder="" required>
-                    </div>
                     <div class="input-box">
                         <label for="cargo">Cargos</label>
                         <input id="cargo" type="text" name="cargo" placeholder="Digite um Cargo" required  value="${funcionario.cargo}">

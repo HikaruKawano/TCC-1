@@ -1,12 +1,13 @@
         create table pessoa(
             idPessoa serial not null primary key,
-            imgpessoa varchar,
+            nomeImg varchar,
             nomePessoa varchar not null,            
             dataNascimentoPessoa varchar not null,
             cpfPessoa varchar not null,
             cepPessoa varchar not null,
             cidadePessoa varchar not null,
             bairroPessoa varchar not null,
+            ruaPessoa varchar not null,
             numeroPessoa varchar not null,
             complementoPessoa varchar not null,
             estadoPessoa varchar not null,           
@@ -24,7 +25,7 @@
         create table pet(
             idPet serial not null primary key,
             idPessoa int not null references pessoa(idpessoa),
-            imgpet varchar not null,
+            nomeImg varchar not null,
             nomepet varchar not null,
             racapet varchar not null,
             idadepet varchar not null,
@@ -36,53 +37,58 @@
         );
 
         create table Adotar(
-            idCliente int not null references cliente(idCliente),
-            idFuncionario int not null references funcionario(idFuncionario)
-        ) inherits(pet);
+            idAdocao serial not null primary key,
+            idPessoa int not null references pessoa(idPessoa),
+            idPet int not null references pet(idPet),
+            horarioAdocao varchar not null,
+            dataAdocao varchar not null
+        );
   
         -- PROCEDURE CADASTRO E CONSULTA DO FUNCIONARIO;
 
 
-       create or replace procedure cadastrarfuncionario(id_pessoa int, img_pessoa varchar, nome_pessoa varchar, cpf_pessoa varchar, data_nascimento_pessoa varchar, cep_pessoa varchar, cidade_pessoa varchar, bairro_pessoa varchar, numero_pessoa varchar, complemento_pessoa varchar, estado_pessoa varchar,  telefone_pessoa varchar, email_pessoa varchar, genero_pessoa varchar, senha_pessoa varchar, cargo varchar, logou_pessoa varchar) as $$
+       create or replace procedure cadastrarfuncionario(id_pessoa int, nomeImg varchar, nome_pessoa varchar, cpf_pessoa varchar, data_nascimento_pessoa varchar, cep_pessoa varchar, cidade_pessoa varchar, bairro_pessoa varchar, numero_pessoa varchar, rua_pessoa varchar, complemento_pessoa varchar, estado_pessoa varchar,  telefone_pessoa varchar, email_pessoa varchar, genero_pessoa varchar, senha_pessoa varchar, logou_pessoa varchar, cargo varchar) as $$
             begin
                 if id_pessoa > 0 then
-                        update funcionario set imgpessoa = img_pessoa, nomepessoa = nome_pessoa, cpfpessoa = cpf_pessoa, datanascimentopessoa = data_nascimento_pessoa, ceppessoa = cep_pessoa, cidadepessoa = cidade_pessoa, bairropessoa = bairro_pessoa, numeropessoa = numero_pessoa, complementopessoa = complemento_pessoa, estadopessoa = estado_pessoa, telefonepessoa = telefone_pessoa, emailpessoa = email_pessoa, generopessoa = genero_pessoa, senhapessoa = senha_pessoa, cargo = cargo, logoupessoa = logou_pessoa where idpessoa = id_pessoa;   
+                        update funcionario set nomeImg = nomeImg, nomepessoa = nome_pessoa, cpfpessoa = cpf_pessoa, datanascimentopessoa = data_nascimento_pessoa, ceppessoa = cep_pessoa, cidadepessoa = cidade_pessoa, bairropessoa = bairro_pessoa, ruapessoa = rua_pessoa, numeropessoa = numero_pessoa, complementopessoa = complemento_pessoa, estadopessoa = estado_pessoa, telefonepessoa = telefone_pessoa, emailpessoa = email_pessoa, generopessoa = genero_pessoa, senhapessoa = senha_pessoa, logoupessoa = logou_pessoa, cargo = cargo where idpessoa = id_pessoa;   
                 else
-                    insert into funcionario values(DEFAULT, img_pessoa, nome_pessoa, cpf_pessoa, data_nascimento_pessoa, cep_pessoa, cidade_pessoa, bairro_pessoa, numero_pessoa, complemento_pessoa, estado_pessoa,  telefone_pessoa, email_pessoa, genero_pessoa, senha_pessoa, cargo);
+                    insert into funcionario values(DEFAULT, nomeImg, nome_pessoa, cpf_pessoa, data_nascimento_pessoa, cep_pessoa, cidade_pessoa, bairro_pessoa, rua_pessoa, numero_pessoa, complemento_pessoa, estado_pessoa,  telefone_pessoa, email_pessoa, genero_pessoa, senha_pessoa, logou_pessoa, cargo);
                 end if;
             end;
         $$ language plpgsql;
 
         -- CALL PARA TESTE:
+insert into funcionario (idpessoa, nomeImg, nomepessoa, cpfpessoa, datanascimentopessoa, ceppessoa, cidadepessoa, bairropessoa, ruapessoa, numeropessoa, complementopessoa, estadopessoa,  telefonepessoa, emailpessoa, generopessoa, senhapessoa, cargo, logoupessoa) 
+	VALUES (0, 'imagem', 'marta', '4747474747474', '45454555', '157550000', 'turmalina', 'jardim', 'rua 12', '47', 'jjjjjjjjjjj', 'sp', '454477777', 'ficava123@gmail.com', 'feminino', '1234', 'funcionario', 'funcionario')
         
-        CALL cadastrarfuncionario(0, 'tia', '20/04/1975', '17062006', 'rua 12', 'jales', 'sp', '15700555', '17996337704', 'fiacava123@gmail.com', 'feminino', '1234')
+call cadastrarfuncionario(0, 'imagem', 'marta', '4747474747474', '45454555', '157550000', 'turmalina', 'jardim', 'rua 12', '47', 'jjjjjjjjjjj', 'sp', '454477777', 'ficava123@gmail.com', 'feminino', '1234', 'funcionario', 'escritora')
 
 
         -- PROCEDURE CADASTRO E CONSULTA DO CLIENTE;
 
-        create or replace procedure cadastrarcliente(id_pessoa int, img_pessoa varchar, nome_pessoa varchar, cpf_pessoa varchar, data_nascimento_pessoa varchar, cep_pessoa varchar, cidade_pessoa varchar, bairro_pessoa varchar, numero_pessoa varchar, complemento_pessoa varchar, estado_pessoa varchar, telefone_pessoa varchar, email_pessoa varchar, genero_pessoa varchar, senha_pessoa varchar, logou_pessoa varchar) as $$
+        create or replace procedure cadastrarcliente(id_pessoa int, nomeImg varchar, nome_pessoa varchar, cpf_pessoa varchar, data_nascimento_pessoa varchar, cep_pessoa varchar, cidade_pessoa varchar, bairro_pessoa varchar, rua_pessoa varchar, numero_pessoa varchar, complemento_pessoa varchar, estado_pessoa varchar, telefone_pessoa varchar, email_pessoa varchar, genero_pessoa varchar, senha_pessoa varchar, logou_pessoa varchar) as $$
             begin
                 if id_pessoa > 0 then
-                        update cliente set imgpessoa = img_pessoa, nomepessoa = nome_pessoa, cpfpessoa = cpf_pessoa, datanascimentopessoa = data_nascimento_pessoa, ceppessoa = cep_pessoa, cidadepessoa = cidade_pessoa, bairropessoa = bairro_pessoa, numeropessoa = numero_pessoa, complementopessoa = complemento_pessoa, estadopessoa = estado_pessoa, telefonepessoa = telefone_pessoa, emailpessoa = email_pessoa, generopessoa = genero_pessoa, senhapessoa = senha_pessoa, logoupessoa = logou_pessoa where idpessoa = id_pessoa;   
+                        update cliente set nomeImg = nomeImg, nomepessoa = nome_pessoa, cpfpessoa = cpf_pessoa, datanascimentopessoa = data_nascimento_pessoa, ceppessoa = cep_pessoa, cidadepessoa = cidade_pessoa, bairropessoa = bairro_pessoa, ruapessoa = rua_pessoa, numeropessoa = numero_pessoa, complementopessoa = complemento_pessoa, estadopessoa = estado_pessoa, telefonepessoa = telefone_pessoa, emailpessoa = email_pessoa, generopessoa = genero_pessoa, senhapessoa = senha_pessoa, logoupessoa = logou_pessoa where idpessoa = id_pessoa;   
                 else
-                    insert into cliente values(DEFAULT, img_pessoa, nome_pessoa, cpf_pessoa, data_nascimento_pessoa, cep_pessoa, cidade_pessoa, bairro_pessoa, numero_pessoa, complemento_pessoa, estado_pessoa,  telefone_pessoa, email_pessoa, genero_pessoa, senha_pessoa);
+                    insert into cliente values(DEFAULT, nomeImg, nome_pessoa, cpf_pessoa, data_nascimento_pessoa, cep_pessoa, cidade_pessoa, bairro_pessoa, rua_pessoa, numero_pessoa, complemento_pessoa, estado_pessoa,  telefone_pessoa, email_pessoa, genero_pessoa, senha_pessoa, logou_pessoa);
                 end if;
             end;
         $$ language plpgsql;
 
         -- CALL PARA TESTE:
 
-        CALL cadastrarcliente(0, 'juca', '17/06/2005', '151515151', 'rua 12', 'jales', 'sp', '15700555', '17996337704', 'fiacava123@gmail.com', 'feminino', '1234')
+call cadastrarcliente(0, 'imagem', 'marta', '4747474747474', '45454555', '157550000', 'turmalina', 'jardim', 'rua 12', '47', 'jjjjjjjjjjj', 'sp', '454477777', 'anamagaroti@gmail.com', 'feminino', '1234', 'cliente')
 
 
         -- PROCEDURE CADASTRO E CONSULTA DE PET;
 
-        create or replace procedure cadastrarpet(id_pet int, img_pet varchar, nome_pet varchar, raca_pet varchar, idade_pet varchar, especie_pet varchar, cores_pet varchar, sexo_pet varchar, porte_pet varchar, observacoes_pet varchar) as $$
+        create or replace procedure cadastrarpet(id_pet int, imagem varchar, nomeImg, nome_pet varchar, raca_pet varchar, idade_pet varchar, especie_pet varchar, cores_pet varchar, sexo_pet varchar, porte_pet varchar, observacoes_pet varchar) as $$
             begin
                 if id_pet > 0 then
-                    update pet set imgpet = img_pet, nomePet = nome_pet, racaPet = raca_pet, idadePet = idade_pet, especiePet = especie_pet, coresPet = cores_pet, sexoPet = sexo_pet, portePet = porte_pet, observacoes = observacoes_pet where idPet = id_pet;
+                    update pet set imagem = imagem, nomeImg = nomeImg, nomePet = nome_pet, racaPet = raca_pet, idadePet = idade_pet, especiePet = especie_pet, coresPet = cores_pet, sexoPet = sexo_pet, portePet = porte_pet, observacoes = observacoes_pet where idPet = id_pet;
                 else
-                    insert into pet values(default, img_pet, nome_pet, raca_pet, idade_pet, especie_pet, cores_pet, sexo_pet, porte_pet, observacoes_pet);
+                    insert into pet values(default, imagem, nomeImg, nome_pet, raca_pet, idade_pet, especie_pet, cores_pet, sexo_pet, porte_pet, observacoes_pet);
                 end if;
             end;
         $$ language plpgsql;

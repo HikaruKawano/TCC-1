@@ -7,7 +7,8 @@ public class Pessoa {
     private String dataNascimentoPessoa;
     private String cepPessoa;
     private String cidadePessoa;
-    private String bairroPessoa;    
+    private String bairroPessoa;  
+    private String ruaPessoa;
     private String numeroPessoa;
     private String complementoPessoa;
     private String estadoPessoa;
@@ -17,13 +18,14 @@ public class Pessoa {
     private String senhaPessoa;
     private String logouPessoa;
 
-    public Pessoa(String nomePessoa, String cpfPessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa, String senhaPessoa, String logouPessoa) {
+    public Pessoa(String nomePessoa, String cpfPessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String ruaPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa, String senhaPessoa, String logouPessoa) {
         this.nomePessoa = nomePessoa;
         this.cpfPessoa = cpfPessoa;
         this.dataNascimentoPessoa = dataNascimentoPessoa;
         this.cepPessoa = cepPessoa;
         this.cidadePessoa = cidadePessoa;
         this.bairroPessoa = bairroPessoa;
+        this.ruaPessoa = ruaPessoa;
         this.numeroPessoa = numeroPessoa; 
         this.complementoPessoa = complementoPessoa; 
         this.estadoPessoa = estadoPessoa;     
@@ -34,13 +36,14 @@ public class Pessoa {
         this.logouPessoa = logouPessoa;
     }
     
-    public Pessoa(String nomePessoa, String cpfPessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa) {
+    public Pessoa(String nomePessoa, String cpfPessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String ruaPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa) {
         this.nomePessoa = nomePessoa;
         this.cpfPessoa = cpfPessoa;
         this.dataNascimentoPessoa = dataNascimentoPessoa;
         this.cepPessoa = cepPessoa;
         this.cidadePessoa = cidadePessoa;
         this.bairroPessoa = bairroPessoa;
+        this.ruaPessoa = ruaPessoa;
         this.numeroPessoa = numeroPessoa; 
         this.complementoPessoa = complementoPessoa; 
         this.estadoPessoa = estadoPessoa;     
@@ -56,12 +59,13 @@ public class Pessoa {
         this.generoPessoa = generoPessoa;
     }
 
-    public Pessoa(String nomePessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa) {
+    public Pessoa(String nomePessoa, String dataNascimentoPessoa, String cepPessoa, String cidadePessoa, String bairroPessoa, String ruaPessoa, String numeroPessoa, String complementoPessoa, String estadoPessoa, String telefonePessoa, String emailPessoa, String generoPessoa) {
         this.nomePessoa = nomePessoa;
         this.dataNascimentoPessoa = dataNascimentoPessoa;
         this.cepPessoa = cepPessoa;
         this.cidadePessoa = cidadePessoa;
         this.bairroPessoa = bairroPessoa;
+        this.ruaPessoa = ruaPessoa;
         this.numeroPessoa = numeroPessoa;
         this.complementoPessoa = complementoPessoa;
         this.estadoPessoa = estadoPessoa;
@@ -69,7 +73,7 @@ public class Pessoa {
         this.emailPessoa = emailPessoa;
         this.generoPessoa = generoPessoa;
     }
-
+    
     public Pessoa() {
     }
  
@@ -111,6 +115,14 @@ public class Pessoa {
 
     public void setBairroPessoa(String bairroPessoa) {
         this.bairroPessoa = bairroPessoa;
+    }
+
+    public String getRuaPessoa() {
+        return ruaPessoa;
+    }
+
+    public void setRuaPessoa(String ruaPessoa) {
+        this.ruaPessoa = ruaPessoa;
     }
 
     public String getCepPessoa() {

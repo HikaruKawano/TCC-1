@@ -19,27 +19,29 @@ import model.Funcionario;
 
     @Override
     public void cadastrar(Object objeto) throws SQLException {
-    String sql = "call cadastrarfuncionario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String sql = "call cadastrarfuncionario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
        Funcionario funcionario = (Funcionario) objeto;
         PreparedStatement stmt = null;
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, funcionario.getIdFuncionario());
-            stmt.setString(2, funcionario.getNomePessoa());
-            stmt.setString(3,funcionario.getCpfPessoa());
-            stmt.setString(4,funcionario.getDataNascimentoPessoa());
-            stmt.setString(5, funcionario.getCepPessoa());
-            stmt.setString(6, funcionario.getCidadePessoa());
-            stmt.setString(7, funcionario.getBairroPessoa()); 
-            stmt.setString(8, funcionario.getNumeroPessoa());
-            stmt.setString(9, funcionario.getComplementoPessoa());
-            stmt.setString(10, funcionario.getEstadoPessoa());
-            stmt.setString(11, funcionario.getTelefonePessoa());
-            stmt.setString(12, funcionario.getEmailPessoa());
-            stmt.setString(13, funcionario.getGeneroPessoa());
-            stmt.setString (14, funcionario.getSenhaPessoa());
-            stmt.setString (15, funcionario.getCargo());
-            stmt.setString (16, funcionario.getLogouPessoa());
+            stmt.setString(2, funcionario.getNomeImg());
+            stmt.setString(3, funcionario.getNomePessoa());
+            stmt.setString(4,funcionario.getCpfPessoa());
+            stmt.setString(5,funcionario.getDataNascimentoPessoa());
+            stmt.setString(6, funcionario.getCepPessoa());
+            stmt.setString(7, funcionario.getCidadePessoa());
+            stmt.setString(8, funcionario.getBairroPessoa());
+            stmt.setString(9, funcionario.getRuaPessoa());
+            stmt.setString(10, funcionario.getNumeroPessoa());
+            stmt.setString(11, funcionario.getComplementoPessoa());
+            stmt.setString(12, funcionario.getEstadoPessoa());
+            stmt.setString(13, funcionario.getTelefonePessoa());
+            stmt.setString(14, funcionario.getEmailPessoa());
+            stmt.setString(15, funcionario.getGeneroPessoa());
+            stmt.setString (16, funcionario.getSenhaPessoa());
+            stmt.setString (17, funcionario.getCargo());
+            stmt.setString (18, funcionario.getLogouPessoa());
 
             stmt.execute();
         } catch (SQLException ex) {
@@ -60,7 +62,7 @@ import model.Funcionario;
                     stmt.setInt(1, codigo);
                     rs = stmt.executeQuery();
                     while (rs.next()) {
-                        funcionario = new Funcionario(rs.getInt("idpessoa"), rs.getString("nomepessoa"), rs.getString("ceppessoa"), rs.getString("cidadepessoa"), rs.getString("bairropessoa"), rs.getString("numeropessoa"), rs.getString("complementopessoa"), rs.getString("estadopessoa"), rs.getString("telefonepessoa"), rs.getString("emailpessoa"),  rs.getString("generopessoa"), rs.getString("senhapessoa"), rs.getString("cargo"));
+                        funcionario = new Funcionario(rs.getInt("idpessoa"), rs.getString("imagem"), rs.getString("nomeimg"), rs.getString("nomepessoa"), rs.getString("ceppessoa"), rs.getString("cidadepessoa"), rs.getString("bairropessoa"), rs.getString("ruapessoa"), rs.getString("numeropessoa"), rs.getString("complementopessoa"), rs.getString("estadopessoa"), rs.getString("telefonepessoa"), rs.getString("emailpessoa"),  rs.getString("generopessoa"), rs.getString("senhapessoa"), rs.getString("cargo"));
                     }
                 } catch (SQLException ex) {
                     throw new SQLException("Erro ao consultar funcionário");
@@ -80,7 +82,7 @@ import model.Funcionario;
             stmt = conexao.prepareStatement(sql);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                Funcionario funcionario = new Funcionario(rs.getInt("idpessoa"), rs.getString("nomepessoa"), rs.getString("cpfpessoa"), rs.getString("emailpessoa"), rs.getString("generopessoa"), rs.getString("cargo"));
+                Funcionario funcionario = new Funcionario(rs.getInt("idpessoa"), rs.getString("imagem"), rs.getString("nomeimg"), rs.getString("nomepessoa"), rs.getString("cpfpessoa"), rs.getString("emailpessoa"), rs.getString("generopessoa"), rs.getString("cargo"));
                 listaFuncionario.add(funcionario);
             }
         } catch (SQLException ex) {

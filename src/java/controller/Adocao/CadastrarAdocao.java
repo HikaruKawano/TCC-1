@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Adocao;
+import model.Cliente;
 import model.Funcionario;
 import model.Pet;
 
@@ -20,16 +21,13 @@ public class CadastrarAdocao extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
        try {
             int idAdocao = request.getParameter("idAdocao").isEmpty() ? 0 : Integer.parseInt(request.getParameter("idAdocao"));
-
             String dataAdocao = request.getParameter("dataAdocao");
-
             String horarioAdocao = request.getParameter("horarioAdocao") + ":00";
-
             int idPet = Integer.parseInt(request.getParameter("idPet"));
-
             int idFuncionario = Integer.parseInt(request.getParameter("idFuncionario"));
-
-            Adocao adocao = new Adocao(idAdocao, dataAdocao, horarioAdocao, new Pet(idPet), new Funcionario(idFuncionario));
+            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            Adocao adocao = new Adocao(idAdocao, dataAdocao, horarioAdocao, 
+                    new Pet(idPet), new Funcionario(idFuncionario), new Cliente(idCliente));
 
             adocaoDAO adocaodao = new adocaoDAO();
 
