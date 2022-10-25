@@ -20,12 +20,7 @@ public class CadastrarFuncionario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         try {
-            int idFuncionario = request.getParameter("idpessoa").isEmpty() 
-                    ? 0 : Integer.parseInt(request.getParameter("idpessoa"));
-            
-            request.getRequestDispatcher("imagem").include(request, response);
-            String imagem = (String) request.getAttribute("nomeImg");
-            
+            int idFuncionario = request.getParameter("idpessoa").isEmpty() ? 0 : Integer.parseInt(request.getParameter("idpessoa"));
             String nomePessoa = request.getParameter("nomepessoa");            
             String cpfPessoa = request.getParameter("cpfpessoa");
             String dataNascimentoPessoa = request.getParameter("dataNascimentopessoa");
@@ -41,6 +36,9 @@ public class CadastrarFuncionario extends HttpServlet {
             String generoPessoa = request.getParameter("generopessoa"); 
             String senhaPessoa = request.getParameter("senhapessoa");
             String cargo = request.getParameter("cargo");
+            
+             request.getRequestDispatcher("imagem").include(request, response);
+            String imagem = (String) request.getAttribute("nomeImg");
             
             Funcionario funcionario = new Funcionario(idFuncionario, imagem, nomePessoa, cpfPessoa,  dataNascimentoPessoa, cepPessoa, 
             cidadePessoa, bairroPessoa, ruaPessoa, numeroPessoa, complementoPessoa, estadoPessoa,  telefonePessoa, emailPessoa, generoPessoa, 

@@ -57,13 +57,7 @@
             end;
         $$ language plpgsql;
 
-        -- CALL PARA TESTE:
-insert into funcionario (idpessoa, nomeImg, nomepessoa, cpfpessoa, datanascimentopessoa, ceppessoa, cidadepessoa, bairropessoa, ruapessoa, numeropessoa, complementopessoa, estadopessoa,  telefonepessoa, emailpessoa, generopessoa, senhapessoa, cargo, logoupessoa) 
-	VALUES (0, 'imagem', 'marta', '4747474747474', '45454555', '157550000', 'turmalina', 'jardim', 'rua 12', '47', 'jjjjjjjjjjj', 'sp', '454477777', 'ficava123@gmail.com', 'feminino', '1234', 'funcionario', 'funcionario')
         
-call cadastrarfuncionario(0, 'imagem', 'marta', '4747474747474', '45454555', '157550000', 'turmalina', 'jardim', 'rua 12', '47', 'jjjjjjjjjjj', 'sp', '454477777', 'ficava123@gmail.com', 'feminino', '1234', 'funcionario', 'escritora')
-
-
         -- PROCEDURE CADASTRO E CONSULTA DO CLIENTE;
 
         create or replace procedure cadastrarcliente(id_pessoa int, nomeImg varchar, nome_pessoa varchar, cpf_pessoa varchar, data_nascimento_pessoa varchar, cep_pessoa varchar, cidade_pessoa varchar, bairro_pessoa varchar, rua_pessoa varchar, numero_pessoa varchar, complemento_pessoa varchar, estado_pessoa varchar, telefone_pessoa varchar, email_pessoa varchar, genero_pessoa varchar, senha_pessoa varchar, logou_pessoa varchar) as $$
@@ -77,8 +71,6 @@ call cadastrarfuncionario(0, 'imagem', 'marta', '4747474747474', '45454555', '15
         $$ language plpgsql;
 
         -- CALL PARA TESTE:
-
-call cadastrarcliente(0, 'imagem', 'marta', '4747474747474', '45454555', '157550000', 'turmalina', 'jardim', 'rua 12', '47', 'jjjjjjjjjjj', 'sp', '454477777', 'anamagaroti@gmail.com', 'feminino', '1234', 'cliente')
 
 
         -- PROCEDURE CADASTRO E CONSULTA DE PET;
@@ -95,9 +87,7 @@ call cadastrarcliente(0, 'imagem', 'marta', '4747474747474', '45454555', '157550
 
         -- CALL PARA TESTE:
 
-        CALL cadastrarPet(1,'ana','vira-lata','2anos', 'gata', 'preto e branco', 'femea', 'pequena', 'linda, cheirosa, carinhosa e obediente');
-
-
+       
         -- PROCEDURE DE USUARIO:
 
 
@@ -107,3 +97,14 @@ call cadastrarcliente(0, 'imagem', 'marta', '4747474747474', '45454555', '157550
         union
         select pe.idpessoa as idusuario, pe.emailpessoa as emailusuario, pe.senhapessoa as senhausuario
         from pessoa pe inner join cliente cli on cli.idpessoa = pe.idpessoa
+
+-- CALL PARA TESTE:
+insert into funcionario (idpessoa, nomeImg, nomepessoa, cpfpessoa, datanascimentopessoa, ceppessoa, cidadepessoa, bairropessoa, ruapessoa, numeropessoa, complementopessoa, estadopessoa,  telefonepessoa, emailpessoa, generopessoa, senhapessoa, cargo, logoupessoa) 
+	VALUES (0, 'imagem', 'marta', '4747474747474', '45454555', '157550000', 'turmalina', 'jardim', 'rua 12', '47', 'jjjjjjjjjjj', 'sp', '454477777', 'ficava123@gmail.com', 'feminino', '1234', 'funcionario', 'funcionario')
+        
+call cadastrarfuncionario(0, 'imagem', 'marta', '4747474747474', '45454555', '157550000', 'turmalina', 'jardim', 'rua 12', '47', 'jjjjjjjjjjj', 'sp', '454477777', 'ficava123@gmail.com', 'feminino', '1234', 'funcionario', 'escritora')
+
+call cadastrarcliente(0, 'imagem', 'marta', '4747474747474', '45454555', '157550000', 'turmalina', 'jardim', 'rua 12', '47', 'jjjjjjjjjjj', 'sp', '454477777', 'anamagaroti@gmail.com', 'feminino', '1234', 'cliente')
+
+ CALL cadastrarPet(1,'ana','vira-lata','2anos', 'gata', 'preto e branco', 'femea', 'pequena', 'linda, cheirosa, carinhosa e obediente');
+

@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part; 
+import javax.servlet.http.Part;
 import javax.servlet.annotation.MultipartConfig;
 
 @MultipartConfig
@@ -24,7 +24,7 @@ public class imagem extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-  }
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,10 +36,11 @@ public class imagem extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         try {
 
             //Mudar o caminho para o local da pasta q o servidor esta rodadando
-            String caminho = "C:/Users/ficav/OneDrive/Área de Trabalho/4patas/web/imagem" + "/";
+            String caminho = "C:/Users/Hikaru/Documents/GitHub/4patas" + "/";
             //Ve se a pasta existe se não existe ele cria
             File diretorio = new File(caminho);
             if (!diretorio.exists()) {
@@ -49,38 +50,37 @@ public class imagem extends HttpServlet {
             try {
 
                 Part filePart = request.getPart("imagem");
-
                 String filename = filePart.getSubmittedFileName();
 
                 if (filename == null) {
                     filename = request.getParameter("imagem");
                 }
-                
-                if(filename != null){
-                OutputStream os = null;
-                InputStream is = null;
 
-                File filePath = new File(caminho, filename);
+                if (filename != null) {
+                    OutputStream os = null;
+                    InputStream is = null;
 
-                if (!filePart.getSubmittedFileName().endsWith(".png") && !filePart.getSubmittedFileName().endsWith(".jpg")) {
-                    request.setAttribute("erro", "Seu arquivo não foi aceito");
-                } else {
+                    File filePath = new File(caminho, filename);
 
-                    if (!filePath.exists()) {
+                    if (!filePart.getSubmittedFileName().endsWith(".png") && !filePart.getSubmittedFileName().endsWith(".jpg")) {
+                        request.setAttribute("erro", "Seu arquivo não foi aceito");
+                    } else {
 
-                        os = new FileOutputStream(filePath);
-                        is = filePart.getInputStream();
+                        if (!filePath.exists()) {
 
-                        int read = 0;
-                        while ((read = is.read()) != -1) {
-                            os.write(read);
+                            os = new FileOutputStream(filePath);
+                            is = filePart.getInputStream();
+
+                            int read = 0;
+                            while ((read = is.read()) != -1) {
+                                os.write(read);
+                            }
                         }
                     }
-                }
-                }else{
+                } else {
                     filename = null;
                 }
-                
+
                 request.setAttribute("nomeImg", filename);
             } catch (FileNotFoundException | NullPointerException ex) {
                 Logger.getLogger(imagem.class.getName()).log(Level.SEVERE, null, ex);

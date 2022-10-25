@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <div class="form">
-            <form action="CadastrarFuncionario" method="post">
+            <form action="CadastrarFuncionario" method="post" enctype="multipart/form-data" multiple=webkitdirectory=''>
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastrar funcionario</h1>
@@ -27,7 +27,7 @@
                      
                     <div class="input-box">
                         <label for="Fotp">Foto</label>
-                        <input enctype="multi-part/form-data" id="Foto" type="file"  name="imagem" required>
+                        <input  id="Foto" type="file"  name="imagem" required>
                     </div>
                     <div class="input-box">
                         <label for="nomepessoa">Nome Completo</label>
