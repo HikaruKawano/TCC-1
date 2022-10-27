@@ -25,7 +25,7 @@ import utils.Conexao;
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, cliente.getIdCliente());
-            stmt.setString(2, cliente.getNomeImg());
+            stmt.setString(2, cliente.getImagem());
             stmt.setString(3, cliente.getNomePessoa());
             stmt.setString(4,cliente.getCpfPessoa());
             stmt.setString(5, cliente.getDataNascimentoPessoa());  

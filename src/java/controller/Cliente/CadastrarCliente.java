@@ -19,7 +19,20 @@ public class CadastrarCliente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        try {
+       
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+         try {
             int idCliente = request.getParameter("idpessoa").isEmpty() ? 0 : Integer.parseInt(request.getParameter("idpessoa"));
             
             request.getRequestDispatcher("imagem").include(request, response);
@@ -57,18 +70,6 @@ public class CadastrarCliente extends HttpServlet {
         }
         
         request.getRequestDispatcher("Login").forward(request, response);
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
 
     }
       @Override

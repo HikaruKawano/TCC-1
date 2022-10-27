@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Hikaru/Documents/GitHub/4patas/TCC/src/java/dao/PetDAO.java</file>
+            <file>file:/C:/Users/Hikaru/Documents/GitHub/4patas/TCC/src/java/controller/Login/Login.java</file>
+            <file>file:/C:/Users/Hikaru/Documents/GitHub/4patas/TCC/src/java/controller/Cliente/imagem.java</file>
+            <file>file:/C:/Users/Hikaru/Documents/GitHub/4patas/TCC/src/java/controller/Pet/CadastrarPet.java</file>
+            <file>file:/C:/Users/Hikaru/Documents/GitHub/4patas/TCC/src/java/dao/ClienteDAO.java</file>
+            <file>file:/C:/Users/Hikaru/Documents/GitHub/4patas/TCC/web/login_cadastro.jsp</file>
+            <file>file:/C:/Users/Hikaru/Documents/GitHub/4patas/TCC/web/index.jsp</file>
+            <file>file:/C:/Users/Hikaru/Documents/GitHub/4patas/TCC/src/java/controller/Cliente/CadastrarCliente.java</file>
+            <file>file:/C:/Users/Hikaru/Documents/GitHub/4patas/TCC/web/formulario.jsp</file>
+        </group>
     </open-files>
 </project-private>

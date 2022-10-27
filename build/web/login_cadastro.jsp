@@ -16,7 +16,7 @@
 <div class="container" id="container">
 	
 	<div class="form-container sign-up-container">
-            <form action="CadastrarCliente" method="post" class="Form-criar-conta">
+            <form action="CadastrarCliente" method="post" enctype="multipart/form-data" multiple=webkitdirectory='' class="Form-criar-conta">
 			
 			<h1 class="h1NovaConta">Nova Conta</h1>
                         
@@ -29,10 +29,11 @@
                         <input type="text" id="cep" value="" placeholder="Cep" name="cepCliente" required />
                         <input type="text" id="cidade" placeholder="Cidade" name="cidadeCliente" required />
                         <input type="text" id="bairro" placeholder="Bairro" name="bairroCliente" required />
+                        <input type="text" id="ruaCliente" placeholder="Rua" name="ruaCliente" required />
                         <input type="text" id="numero" placeholder="Número de sua casa" name="numeroCliente" required />
                         <input type="text" id="complemento" placeholder="Complemento do seu endereço" name="complementoCliente" required />
                         <label for="uf" name="estadoCliente">Estado</label>
-                            <select id="uf">
+                            <select id="uf" name="estadoCliente">
                                 <option value="AC">Acre</option>
                                 <option value="AL">Alagoas</option>
                                 <option value="AP">Amapá</option>
